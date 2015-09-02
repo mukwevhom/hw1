@@ -140,6 +140,13 @@ int shell (int argc, char *argv[]) {
 				//printf("mure");
 				exit(1);
 			} else if(pid == 0){
+				for(i=0;i<MAXTOKS && ps[i];i++){
+					char *is = concat(ps[i],"/");
+					is = concat(is, t[0]);
+					if(access(is,F_OK) != -1){
+						execve(is,t,NULL);
+					}
+				}
 				execv(*t, t);
 				exit(0);
 			} else {
