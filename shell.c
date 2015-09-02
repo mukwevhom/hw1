@@ -136,15 +136,15 @@ int shell (int argc, char *argv[]) {
     if(fundex >= 0) cmd_table[fundex].fun(&t[1]);
     else {
       fprintf(stdout, "This shell only supports built-ins. Replace this to run programs as commands.\n");
-			/*if((pid = fork()) < 0){
+			if((pid = fork()) < 0){
 				//printf("mure");
 				exit(1);
 			} else if(pid == 0){
-				execvp(*t, t);
+				execv(*t, t);
 				exit(0);
 			} else {
 				while((pid != wait(&test)));
-			}*/
+			}
     }
     fprintf(stdout, "%d %s: ", ++lineNum, getcwd(c, sizeof(c)));
   }
